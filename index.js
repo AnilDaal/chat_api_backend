@@ -8,7 +8,7 @@ const port = process.env.PORT || 5000;
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: {
-    origin: "*",
+    origin: "https://crm.pacifencesolutions.com/",
   },
 });
 
