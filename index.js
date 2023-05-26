@@ -4,7 +4,7 @@ import express from "express";
 
 const app = express();
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8900;
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: {
@@ -12,12 +12,12 @@ const io = new Server(httpServer, {
   },
 });
 
-const users = [];
+// const users = [];
 
-const addUser = (userId, socketId) => {
-  !users.some((user) => user.userId === userId) &&
-    users.push({ userId, socketId });
-};
+// const addUser = (userId, socketId) => {
+//   !users.some((user) => user.userId === userId) &&
+//     users.push({ userId, socketId });
+// };
 
 io.on("connection", (socket) => {
   console.log("connection done...");
@@ -25,8 +25,8 @@ io.on("connection", (socket) => {
 
   socket.on("chat", (payload) => {
     console.log("this is payload", payload);
-    addUser("i-4342", socket.id);
-    +socket.emit("chat", payload);
+    // addUser("i-4342", socket.id);
+    socket.emit("chat", payload);
   });
 });
 
